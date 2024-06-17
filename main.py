@@ -17,7 +17,7 @@ class Main:
         self.session = cloudscraper.CloudScraper()
         self.session.headers.update({"x-auth-token": self.token})
         if not self.token:
-            cprint.error("Token not found. Please add your token in the config file.")
+            cprint.error("Token tidak ditemukan. Silakan tambahkan token Anda di file konfigurasi.")
             os.system("pause")
             os._exit(0)
 
@@ -161,7 +161,7 @@ class Main:
                     break
 
                 if not choice.isdigit():
-                    cprint.error(f"Please provide a valid option.")
+                    cprint.error(f"Harap berikan opsi yang valid.")
                     time.sleep(1)
                     continue
 
@@ -181,7 +181,7 @@ class Main:
                 if self.game_mode in ["mines", "towers"] and self.bet_amt < 5:
                     while self.bet_amt < 5:
                         try:
-                            self.bet_amt = int(cprint.user_input("Bet amount can not be lower then 5. Enter new bet amount > "))
+                            self.bet_amt = int(cprint.user_input("Jumlah taruhan tidak boleh lebih rendah dari 5. Masukkan jumlah taruhan baru > "))
                         except ValueError:
                             continue
                 
@@ -199,7 +199,7 @@ class Main:
                 if self.game_mode == "slides":
                     slides.Slides(self, self.session).connect()
                 
-                while (rerun := cprint.user_input(f"Done with all {self.game_mode.capitalize()} games, do you want to continue playing? (y/N) > ").lower()) not in ['y', 'n']:
+                while (rerun := cprint.user_input(f"Selesai dengan semuanya {self.game_mode.capitalize()} permainan, apakah Anda ingin terus bermain? (y/t) > ").lower()) not in ['y', 'n']:
                     pass
                 if rerun == 'n': break
 
